@@ -35,6 +35,7 @@ function populatePool(){
 function startDraft(){
 	document.getElementById('preDraft').classList.add('hide');
 	document.getElementById('draftStart').classList.remove('hide');
+	drawBtn();
 }
 function draw(){
 	drawCounter++;
@@ -54,7 +55,10 @@ function draw(){
 		document.getElementById(drawCounter).innerHTML = 
 			"<img class='winningTeam' src='./logos/"+winner+".gif' />"
 
+		drawBtn();
+
 	}else if(drawCounter == 4){
+		drawBtn();
 		endDraft();
 	}
 }
@@ -90,4 +94,14 @@ function printResults(){
 		results += (index+1)+'. '+item.city+' '+item.name+'\r'; 
 	});
 	return results;
+}
+function drawBtn(){
+	if(drawCounter < 3){
+		document.getElementById('tirageBtn').innerHTML =
+			'Effectuer le tirage ('+(3-drawCounter)+')'
+	}else{
+		document.getElementById('tirageBtn').innerHTML =
+			'Voir la liste complète'
+	}
+	
 }
