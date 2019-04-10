@@ -1,0 +1,141 @@
+* {
+	font-family: 'Ubuntu', arial;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body{
+	padding: 5px;
+	background-color: #EEEEEE;
+	min-width: 1024px;
+}
+#header{
+	padding: 15px;
+	text-align: center;
+}
+.contentWrapper{
+	display: flex;
+	width: 100%;
+	align-items: flex-start;
+	justify-content: center;
+}
+.draftDisplay{
+	display: flex;
+}
+#preDraft{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-width: 675px;
+}
+#draftList {
+	padding:2px;
+	margin-right: 5%;
+	border-radius: 10px;
+	width: 25%;
+	min-width: 312px;
+	max-width: 480px;
+	display: flex;
+	flex-direction: column;
+	background: #F9F9F9;
+	box-shadow: 0px 2px 20px -5px rgba(0,0,0,0.5);
+}
+.rItem{
+	padding: 5px;
+	display: flex;
+	align-items: center;
+	background: white;
+	border: 1px inset #F0F0F0;
+	border-radius: 8px;
+	margin: 2px;
+}
+.rItem1st{
+	background: none;
+	border: none;
+}
+.tItem{
+	padding-right: 5px;
+}
+.tRank{
+	width: 39px;
+}
+h4{
+	display: inline;
+}
+.icon{
+	width: 44px;
+	height: 26px;
+	display: inline-block;
+}
+.odds{
+	display: inline-block;
+	padding-left: 5px;
+}
+#draftStart{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-width: 675px;
+}
+#top3Container{
+	display: flex;
+	justify-content: space-evenly;
+}
+.top3Item{
+	width: 200px;
+	height: 130px;
+	background-color: white;
+	box-shadow: 0px 2px 20px -5px rgba(0,0,0,0.5);
+	border-radius: 5px;
+	margin: 8px;
+	padding: 5px;
+	display:flex;
+	align-items: center;
+	justify-content: center
+}
+.winningTeam{
+	width: 135px;
+	display: inline-block;
+}
+#finalRankingContainer{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.finalItem{
+	font-size: 0.9em;
+	background-color: white;
+	border-radius: 5px;
+	border: 1px inset #F0F0F0;
+	padding: 3px;
+	margin: 2px;
+	width: 250px;
+}
+.btn{
+	font-size: 1.2em;
+	padding: 10px 15px;
+	margin: 10px;
+	border-radius: 4px;
+	border: none;
+	background: white;
+	box-shadow: 1px 1px 8px 0px rgba(0,0,0,0.5);
+	cursor: pointer;
+}
+.btn:hover{
+	background: #F8F8F8;
+}
+.btn:active{
+	background: #DFDFDF;
+}
+.btn:focus{
+	outline: 0;
+}
+.hide{
+	display: none !important;
+}
+@media only screen and (max-width: 1175px) {
+ 	#draftList {
+ 		margin-right: 0px;
+  }
+}
