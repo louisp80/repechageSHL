@@ -1,32 +1,30 @@
 let teamList = teams;
-let teamsInPool = [];
+let oddsList = odds;
+let teamsInPool = standings;
 let draftPool = [];
 let draftResults = [];
 let drawCounter = 0;
 window.onload = () => {
-	teamList.forEach(item => {
-		teamsInPool.push(item.abreviation);
-	});
 	displayRankings();
 	populatePool();
 }
 function displayRankings(){
 	let listContainer = document.getElementById("draftList");
-	teamList.forEach((item, index) => {
+	teamsInPool.forEach((item, index) => {
 		listContainer.innerHTML += 
 			"<div class='rItem'>"+
 				"<h4 class='tItem tRank'>"+ (index+1) +"</h4>"+
-				"<img class='icon tItem' src='./logos/"+item.abreviation+".gif' />"+
-				"<h4 class='tItem'>"+item.name+"</h4>"+
-				"<div class='odds tItem'> Odds: "+item.odds+"%</div>"+
+				"<img class='icon tItem' src='./logos/"+item+".gif' />"+
+				"<h4 class='tItem'>"+teamList.find(x => x.abreviation == item).name+"</h4>"+
+				"<div class='odds tItem'> Odds: "+oddsList[index].odds+"%</div>"+
 			"</div>"
 	})
 }
 function populatePool(){
-	teamList.forEach((item, index) => {
-		let entries = item.odds*2;
+	teamsInPool.forEach((item, index) => {
+		let entries = oddsList[index].odds*2;
 		for(i = 0; i<entries; i++){
-			draftPool.push(item.abreviation);
+			draftPool.push(item);
 		}
 	});
 	console.log('Pool size: '+draftPool.length);
