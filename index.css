@@ -78,11 +78,11 @@ h4{
 	align-items: center;
 	min-width: 675px;
 }
-#top3Container{
+#top2Container{
 	display: flex;
 	justify-content: space-evenly;
 }
-.top3Item{
+.top2Item{
 	width: 200px;
 	height: 130px;
 	background-color: white;

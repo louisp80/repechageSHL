@@ -1,1 +1,1 @@
-let standings = ["cgy","njd","edm","buf","phi","vgk","nyi","dal","wsh","sjs","det","col","chi","nyr","fla"]
+let standings = ["vgk","mtl","sea","col","win","njd","phi","car","van","ott","nyr","lak","chi","nyi","min","tbl"]

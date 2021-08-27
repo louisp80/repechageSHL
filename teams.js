@@ -121,6 +121,11 @@ let teams = [
 		abreviation: "sjs"
 	},
 	{
+		name: "Kraken",
+		city: "Seattle",
+		abreviation: "sea"
+	},
+	{
 		name: "Blues",
 		city: "St-Louis",
 		abreviation: "stl"

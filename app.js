@@ -3,7 +3,7 @@ let oddsList = odds;
 let teamsInPool = standings;
 let draftPool = [];
 let draftResults = [];
-let drawCounter = 0;
+let drawCounter = 2;
 window.onload = () => {
 	displayRankings();
 	populatePool();
@@ -22,7 +22,7 @@ function displayRankings(){
 }
 function populatePool(){
 	teamsInPool.forEach((item, index) => {
-		let entries = oddsList[index].odds*2;
+		let entries = oddsList[index].odds*10;
 		for(i = 0; i<entries; i++){
 			draftPool.push(item);
 		}
@@ -33,11 +33,12 @@ function populatePool(){
 function startDraft(){
 	document.getElementById('preDraft').classList.add('hide');
 	document.getElementById('draftStart').classList.remove('hide');
+	draft();
 	drawBtn();
 }
-function draw(){
-	drawCounter++;
-	if(drawCounter <= 3){
+
+function draft(){
+	for(i = 0; i<2; i++){
 		let drawResult = Math.floor(Math.random()*draftPool.length);
 		let winner = draftPool[drawResult];
 		console.log('And the winner is '+winner.toUpperCase());
@@ -49,23 +50,30 @@ function draw(){
 		});
 		let team = teamList.find(t => t.abreviation == winner)
 		draftResults.push(team);
-
-		document.getElementById(drawCounter).innerHTML = 
-			"<img class='winningTeam' src='./logos/"+winner+".gif' />"
-
-		drawBtn();
-
-	}else if(drawCounter == 4){
-		drawBtn();
-		endDraft();
 	}
-}
-function endDraft(){
-	let element = document.getElementById("finalRankingContainer");
 	teamsInPool.forEach(item => {
 		let team = teamList.find(t => t.abreviation == item)
 		draftResults.push(team);
 	});
+}
+function draw(){
+
+	if(drawCounter > 0){
+		let team = draftResults[drawCounter-1];
+		document.getElementById(drawCounter).innerHTML = 
+			"<img class='winningTeam' src='./logos/"+team.abreviation+".gif' />"
+		drawCounter--;
+		drawBtn();
+
+	}else if(drawCounter == 0){
+		drawBtn();
+		endDraft();
+	}
+	
+}
+function endDraft(){
+	let element = document.getElementById("finalRankingContainer");
+	
 	draftResults.forEach((item, index) => {
 		element.innerHTML += 
 			"<div class='finalItem'>"+(index+1)+". "+item.city+" "+item.name+"</div>"
@@ -77,7 +85,7 @@ function endDraft(){
 function saveDraft(){
 	var element = document.createElement('a');
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(printResults()));
-  element.setAttribute('download', 'repechageSHL2019.txt');
+  element.setAttribute('download', 'repechageSHL2021.txt');
 
   element.style.display = 'none';
   document.body.appendChild(element);
@@ -94,9 +102,9 @@ function printResults(){
 	return results;
 }
 function drawBtn(){
-	if(drawCounter < 3){
+	if(drawCounter > 0){
 		document.getElementById('tirageBtn').innerHTML =
-			'Effectuer le tirage ('+(3-drawCounter)+')'
+			'Effectuer le tirage ('+drawCounter+')'
 	}else{
 		document.getElementById('tirageBtn').innerHTML =
 			'Voir la liste complète'
